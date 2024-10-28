@@ -78,3 +78,27 @@ int main() {
             }
         } while (opcao != 8);
     }
+
+#define MAX_USUARIOS 10
+#define MAX_LIVROS 100
+#define MAX_GENEROS 30
+#define TAMANHO_LOGIN 20
+#define TAMANHO_SENHA 20
+
+typedef struct {
+    char login[TAMANHO_LOGIN];
+    char senha[TAMANHO_SENHA];
+} Usuario;
+
+typedef struct {
+    char titulo[50];
+    char autor[50];
+    char genero[30];
+    int ano;
+} Livro;
+
+Usuario usuarios[MAX_USUARIOS];
+Livro biblioteca[MAX_LIVROS];
+
+int totalUsuarios = 0;
+int totalLivros = 0;
