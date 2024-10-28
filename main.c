@@ -135,3 +135,22 @@ void cadastrarUsuario() {
     usuarios[totalUsuarios++] = novoUsuario;
     printf("Usuário cadastrado com sucesso!\n");
 }
+
+// Função para validar o login do usuário
+int realizarLogin() {
+    char login[TAMANHO_LOGIN];
+    char senha[TAMANHO_SENHA];
+
+    printf("Login: ");
+    scanf("%s", login);
+    printf("Senha: ");
+    scanf("%s", senha);
+
+    for (int i = 0; i < totalUsuarios; i++) {
+        if (strcmp(usuarios[i].login, login) == 0 &&
+            strcmp(usuarios[i].senha, senha) == 0) {
+            return 1;
+        }
+    }
+    return 0;
+}
