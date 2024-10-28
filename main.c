@@ -154,3 +154,31 @@ int realizarLogin() {
     }
     return 0;
 }
+
+// Função para adicionar um livro
+void adicionarLivro() {
+    if (totalLivros >= MAX_LIVROS) {
+        printf("Limite de livros atingido.\n");
+        return;
+    }
+
+    Livro novoLivro;
+    printf("Digite o título do livro: ");
+    getchar();
+    fgets(novoLivro.titulo, 50, stdin);
+    strtok(novoLivro.titulo, "\n");
+
+    printf("Digite o autor do livro: ");
+    fgets(novoLivro.autor, 50, stdin);
+    strtok(novoLivro.autor, "\n");
+
+    printf("Digite o gênero do livro: ");
+    fgets(novoLivro.genero, 30, stdin);
+    strtok(novoLivro.genero, "\n");
+
+    printf("Digite o ano de publicação: ");
+    scanf("%d", &novoLivro.ano);
+
+    biblioteca[totalLivros++] = novoLivro;
+    printf("Livro adicionado com sucesso!\n");
+}
