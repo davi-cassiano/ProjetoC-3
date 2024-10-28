@@ -102,3 +102,13 @@ Livro biblioteca[MAX_LIVROS];
 
 int totalUsuarios = 0;
 int totalLivros = 0;
+
+// Função para verificar se o login já existe
+int loginExiste(char login[]) {
+    for (int i = 0; i < totalUsuarios; i++) {
+        if (strcmp(usuarios[i].login, login) == 0) {
+            return 1;
+        }
+    }
+    return 0;
+}
