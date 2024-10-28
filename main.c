@@ -112,3 +112,26 @@ int loginExiste(char login[]) {
     }
     return 0;
 }
+
+// Função para cadastrar um novo usuário
+void cadastrarUsuario() {
+    if (totalUsuarios >= MAX_USUARIOS) {
+        printf("Limite de usuários atingido.\n");
+        return;
+    }
+
+    Usuario novoUsuario;
+    printf("Digite o login desejado: ");
+    scanf("%s", novoUsuario.login);
+
+    if (loginExiste(novoUsuario.login)) {
+        printf("Erro: Login já existe. Tente um login diferente.\n");
+        return;
+    }
+
+    printf("Digite a senha: ");
+    scanf("%s", novoUsuario.senha);
+
+    usuarios[totalUsuarios++] = novoUsuario;
+    printf("Usuário cadastrado com sucesso!\n");
+}
