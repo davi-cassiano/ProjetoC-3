@@ -373,3 +373,14 @@ void salvarLivros() {
     }
     fclose(file);
 }
+
+// Função para salvar os usuários em um arquivo binário
+void salvarUsuariosBinario() {
+    FILE *file = fopen("usuarios.bin", "wb");
+    if (file == NULL) {
+        return;
+    }
+
+    fwrite(usuarios, sizeof(Usuario), totalUsuarios, file);
+    fclose(file);
+}
