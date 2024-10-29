@@ -359,3 +359,17 @@ void salvarUsuarios() {
     }
     fclose(file);
 }
+
+// Função para salvar os livros em um arquivo txt
+void salvarLivros() {
+    FILE *file = fopen("livros.txt", "w");
+    if (file == NULL) {
+        return;
+    }
+
+    for (int i = 0; i < totalLivros; i++) {
+        fprintf(file, "%s\n%s\n%s\n%d\n", biblioteca[i].titulo,
+                biblioteca[i].autor, biblioteca[i].genero, biblioteca[i].ano);
+    }
+    fclose(file);
+}
