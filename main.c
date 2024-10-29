@@ -78,6 +78,14 @@ int main() {
             }
         } while (opcao != 8);
     }
+    // Salvar dados automaticamente ao sair
+    salvarUsuarios(); // Salvar livros em formato txt
+    salvarLivros(); // Salvar livros em formato txt
+    salvarUsuariosBinario(); // Salvar usuários em formato binário
+    salvarLivrosBinario();   // Salvar livros em formato binário
+
+    return 0;
+}
 
 #define MAX_USUARIOS 10
 #define MAX_LIVROS 100
@@ -271,5 +279,44 @@ void buscarLivroPorTitulo() {
 
     if (!encontrado) {
         printf("Nenhum livro encontrado com o título especificado.\n");
+    }
+}
+
+// Função para editar os dados de um livro
+void editarLivro() {
+    char tituloBusca[50];
+    int encontrado = 0;
+    printf("Digite o título do livro que deseja editar: ");
+    getchar();
+    fgets(tituloBusca, 50, stdin);
+    strtok(tituloBusca, "\n");
+
+    for (int i = 0; i < totalLivros; i++) {
+        if (strcmp(biblioteca[i].titulo, tituloBusca) == 0) {
+            printf("Livro encontrado. Insira os novos dados:\n");
+
+            printf("Novo título (atual: %s): ", biblioteca[i].titulo);
+            fgets(biblioteca[i].titulo, 50, stdin);
+            strtok(biblioteca[i].titulo, "\n");
+
+            printf("Novo autor (atual: %s): ", biblioteca[i].autor);
+            fgets(biblioteca[i].autor, 50, stdin);
+            strtok(biblioteca[i].autor, "\n");
+
+            printf("Novo gênero (atual: %s): ", biblioteca[i].genero);
+            fgets(biblioteca[i].genero, 30, stdin);
+            strtok(biblioteca[i].genero, "\n");
+
+            printf("Novo ano de publicação (atual: %d): ", biblioteca[i].ano);
+            scanf("%d", &biblioteca[i].ano);
+
+            printf("Dados do livro atualizados com sucesso!\n");
+            encontrado = 1;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        printf("Livro não encontrado.\n");
     }
 }
