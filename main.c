@@ -219,3 +219,32 @@ void buscarLivroPorGenero() {
         printf("Nenhum livro encontrado para o gênero especificado.\n");
     }
 }
+
+// Função para listar gêneros 
+void listarGeneros() {
+    char generos[MAX_LIVROS][30]; // Armazenar gêneros únicos
+    int totalGeneros = 0;
+
+    for (int i = 0; i < totalLivros; i++) {
+        int j;
+        // Verifica se o gênero já está na lista
+        for (j = 0; j < totalGeneros; j++) {
+            if (strcmp(generos[j], biblioteca[i].genero) == 0) {
+                break;
+            }
+        }
+        // Se não encontrado, adiciona à lista
+        if (j == totalGeneros) {
+            strcpy(generos[totalGeneros++], biblioteca[i].genero);
+        }
+    }
+
+    if (totalGeneros == 0) {
+        printf("Nenhum gênero cadastrado.\n");
+    } else {
+        printf("Gêneros cadastrados:\n");
+        for (int i = 0; i < totalGeneros; i++) {
+            printf("%d. %s\n", i + 1, generos[i]);
+        }
+    }
+}
