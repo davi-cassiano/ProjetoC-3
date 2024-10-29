@@ -182,3 +182,18 @@ void adicionarLivro() {
     biblioteca[totalLivros++] = novoLivro;
     printf("Livro adicionado com sucesso!\n");
 }
+
+// Função para listar todos os livros
+void listarLivros() {
+    if (totalLivros == 0) {
+        printf("Nenhum livro cadastrado.\n");
+        return;
+    }
+
+    printf("Lista de Livros:\n");
+    for (int i = 0; i < totalLivros; i++) {
+        printf("%d. Título: %s | Autor: %s | Gênero: %s | Ano: %d\n", i + 1,
+               biblioteca[i].titulo, biblioteca[i].autor, biblioteca[i].genero,
+               biblioteca[i].ano);
+    }
+}
