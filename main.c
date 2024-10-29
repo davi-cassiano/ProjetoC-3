@@ -248,3 +248,28 @@ void listarGeneros() {
         }
     }
 }
+
+// Função para buscar livros por título
+void buscarLivroPorTitulo() {
+    char tituloBusca[50];
+    int encontrado = 0;
+    printf("Digite o título do livro para busca: ");
+    getchar();
+    fgets(tituloBusca, 50, stdin);
+    strtok(tituloBusca, "\n");
+
+    for (int i = 0; i < totalLivros; i++) {
+        if (strcmp(biblioteca[i].titulo, tituloBusca) == 0) {
+            printf(
+                "Livro encontrado: Título: %s | Autor: %s | Gênero: %s | Ano: %d\n",
+                biblioteca[i].titulo, biblioteca[i].autor, biblioteca[i].genero,
+                biblioteca[i].ano);
+            encontrado = 1;
+            break; // Para retornar apenas o primeiro livro encontrado
+        }
+    }
+
+    if (!encontrado) {
+        printf("Nenhum livro encontrado com o título especificado.\n");
+    }
+}
