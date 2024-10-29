@@ -320,3 +320,29 @@ void editarLivro() {
         printf("Livro não encontrado.\n");
     }
 }
+
+// Função para remover um livro pelo título
+void removerLivro() {
+    char tituloRemover[50];
+    int encontrado = 0;
+    printf("Digite o título do livro para remover: ");
+    getchar();
+    fgets(tituloRemover, 50, stdin);
+    strtok(tituloRemover, "\n");
+
+    for (int i = 0; i < totalLivros; i++) {
+        if (strcmp(biblioteca[i].titulo, tituloRemover) == 0) {
+            for (int j = i; j < totalLivros - 1; j++) {
+                biblioteca[j] = biblioteca[j + 1];
+            }
+            totalLivros--;
+            printf("Livro removido com sucesso!\n");
+            encontrado = 1;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        printf("Livro não encontrado.\n");
+    }
+}
