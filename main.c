@@ -346,3 +346,16 @@ void removerLivro() {
         printf("Livro não encontrado.\n");
     }
 }
+
+// Função para salvar os usuários em um arquivo txt
+void salvarUsuarios() {
+    FILE *file = fopen("usuarios.txt", "w");
+    if (file == NULL) {
+        return;
+    }
+
+    for (int i = 0; i < totalUsuarios; i++) {
+        fprintf(file, "%s\n%s\n", usuarios[i].login, usuarios[i].senha);
+    }
+    fclose(file);
+}
